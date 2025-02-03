@@ -11,7 +11,7 @@ const Navbar = () => {
         <nav>
       <div className="navigation">
         <div className="nav-header">
-          <img src={logo} alt="Logo" />
+        <NavLink to="/"><img src={logo} alt="Logo" /></NavLink>
           <button onClick={() => setShowMenu(!showMenu)}>
             <GiHamburgerMenu className="hamburger-icon"/>
           </button>
