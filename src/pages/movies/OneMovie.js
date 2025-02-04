@@ -1,8 +1,8 @@
 import "./OneMovie.css";
 import { useParams } from "react-router-dom";
-import { projectFirestore } from "../firebase/config";
+import { projectFirestore } from "../../firebase/config";
 import { useState, useEffect } from "react";
-import Trailer from "./Trailer";
+import Trailer from "../trailers/Trailer";
 
 const OneMovie = () => {
   const [data, setData] = useState({});

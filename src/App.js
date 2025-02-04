@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
-import AllMovies from './pages/AllMovies'
-import OneMovie from './pages/OneMovie'
-import AllSerials from './pages/AllSerials'
-import OneSerial from './pages/OneSerial'
-import SharedLayout from './pages/SharedLayout'
+import AllMovies from './pages//movies/AllMovies'
+import OneMovie from './pages//movies/OneMovie'
+import AllSerials from './pages//serials/AllSerials'
+import OneSerial from './pages/serials/OneSerial'
+import SharedLayout from './pages/layout/SharedLayout'
 
 const App = () => {
     return <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>

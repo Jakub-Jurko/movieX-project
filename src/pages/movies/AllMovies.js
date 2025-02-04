@@ -1,6 +1,6 @@
 import "./AllMovies.css"
 import { useEffect, useState } from "react";
-import { projectFirestore } from "../firebase/config";
+import { projectFirestore } from "../../firebase/config";
 import { FaStar } from "react-icons/fa6";
 import { NavLink } from 'react-router-dom'
 
