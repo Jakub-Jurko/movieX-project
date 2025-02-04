@@ -61,6 +61,44 @@ const OneMovie = () => {
           </div>
         </div>
       </div>
+      <div className="people-box">
+        <img src={data.small_img_url} alt="" className="small-img"/>
+      <div className="all-people">
+        <p className="director">
+          <span className="role">Réžie: </span>
+          <span className="person">{data.director}</span>
+        </p>
+        <p className="people">
+          <span className="role">Scénař: </span>
+          <span className="person">{data.scenario}</span>
+        </p>
+        <p className="people">
+          <span className="role">Hrají: </span>
+          <span className="actor-list">
+            {data.actors &&
+              data.actors.map((actor, id) => (
+                <span key={id} className="person">
+                  {actor}
+                  {id < data.actors.length - 1 ? " • " : ""}
+                </span>
+              ))}
+          </span>
+        </p>
+        <p className="people">
+          <span className="role">Země: </span>
+          <span className="actor-list">
+            {data.country &&
+              data.country.map((state, id) => (
+                <span key={id} className="person">
+                  {state}
+                  {id < data.country.length - 1 ? " • " : ""}
+                </span>
+              ))}
+          </span>
+        </p>
+      </div>
+      </div>
+      
       <p className="description">
         {isExpanded ? data.description : shortText}{" "}
         {data.description && data.description.length > maxLength && (
