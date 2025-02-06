@@ -19,7 +19,7 @@ const Navbar = () => {
 
         <div className={`${showMenu ? "nav-list show" : "nav-list hide"}`}>
           <ul>
-            <li><NavLink to="form" >Přidání filmů</NavLink></li>
+            <li><NavLink to="add-movie" onClick={ () => setShowMenu(false)} >Přidání filmů</NavLink></li>
             <li><NavLink to="/" onClick={ () => setShowMenu(false)}>Domů</NavLink></li>
             <li><NavLink to="/all-movies" onClick={ () => setShowMenu(false)}>Filmy</NavLink></li>
             <li><NavLink to="/all-serials" onClick={ () => setShowMenu(false)}>Seriály</NavLink></li>

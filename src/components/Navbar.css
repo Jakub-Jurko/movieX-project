@@ -45,6 +45,7 @@ nav {
 .nav-list a {
     text-decoration: none;
     color: #e5e5e5;
+    font-weight: bold;
 }
 
 .nav-list a.active {

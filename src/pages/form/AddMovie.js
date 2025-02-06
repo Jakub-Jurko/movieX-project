@@ -1,4 +1,4 @@
-import "./Form.css";
+import "./AddMovie.css";
 import { useState } from "react";
 import { projectFirestore } from "../../firebase/config";
 
@@ -35,7 +35,7 @@ const Form = () => {
 
     const newMovie = {
       title: Title,
-      minage: parseInt(Age),
+      min_age: parseInt(Age),
       time: parseInt(Time),
       description: Description,
       youtube_id: YoutubeId,
@@ -156,13 +156,13 @@ const Form = () => {
           type="text"
           onChange={handleActorsChange}
           value={Actors.join(',')}
-          placeholder="Herci oddelené čárkou !"
+          placeholder="Herci oddělené čárkou !"
         />
 
         <input
           className="input"
           type="text"
-          placeholder="Země oddelentexté čárkou !"
+          placeholder="Země oddělené čárkou !"
           onChange={handleCountryChange}
           value={Country.join(',')}
         />
@@ -170,7 +170,7 @@ const Form = () => {
         <input
           className="input"
           type="text"
-          placeholder="Žánre oddelené čárkou !"
+          placeholder="Žánre oddělené čárkou !"
           onChange={handleGenresChange}
           value={Genres.join(',')}
         />
