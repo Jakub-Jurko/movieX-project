@@ -46,4 +46,14 @@
   .slick-next {
     right: 15px;
   }
+
+  /* Responzivní úprava pro mobily */
+@media (max-width: 768px) {
+    .carousel-image {
+        width: 100%;
+        height: 25vh; /* Pokryje 80% výšky obrazovky */
+        object-fit: cover; /* Zachová poměr stran a pokryje oblast */
+        margin-bottom: 15px;
+      }
+}
   
