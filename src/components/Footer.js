@@ -10,10 +10,10 @@ const Footer = () => {
 
         <div className="footer-links">
           <a href="https://github.com/Jakub-Jurko" target="_blank" rel="noopener noreferrer">
-            <FaGithub /> GitHub
+            <FaGithub />
           </a>
           <a href="https://www.linkedin.com/in/jakub-jurko-331683285/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin /> LinkedIn
+            <FaLinkedin />
           </a>
         </div>
       </div>

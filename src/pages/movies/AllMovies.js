@@ -53,7 +53,7 @@ const Allmovies = () => {
         {data.map( (oneMovie) => {
             const {id, title, small_img_url, evaluatedi} = oneMovie
 
-            return <div>
+            return <div className="movie-container">
                 <NavLink key={id} to={`/one-movie/${id}`} className="one-movie">
                     <img src={small_img_url} alt="" className="img"/>
                     <p className="evaluatedi"><FaStar className="star"/> {evaluatedi}</p>

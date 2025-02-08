@@ -1,8 +1,10 @@
 import "./AddMovie.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { projectFirestore } from "../../firebase/config";
 
-const Form = () => {
+const AddMovie = () => {
   const [Title, setTitle] = useState("");
   const [Age, setAge] = useState(null);
   const [Time, setTime] = useState(null);
@@ -17,6 +19,7 @@ const Form = () => {
   const [Country, setCountry] = useState([]);
   const [Genres, setGenres] = useState([]);
   const [Year, setYear] = useState(null);
+  const { role } = useContext(AuthContext)
 
   const handleActorsChange = (e) => {
     setActors(e.target.value.split(",")); // Předpokládáme, že herci budou zadáváni jako čárkami oddělený seznam
@@ -70,6 +73,10 @@ const Form = () => {
       console.log(err.message);
     }
   };
+
+  if (role !== "admin") {
+    return <Navigate to="/" />
+  }
 
   return (
     <section className="form-section">
@@ -197,4 +204,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default AddMovie;

@@ -1,211 +1,207 @@
 .page {
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    color: #e5e5e5;
-    padding: 0;
-  }
-  
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0px 0px 5px black;
-    z-index: -2;
-  }
-  
-  .background::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 70%; /* Stín zleva */
-    height: 100%;
-    background: linear-gradient(to right, black, rgba(0, 0, 0, 0));
-    z-index: -1;
-  }
+  position: relative;
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #e5e5e5;
+  padding: 0;
+}
 
-  .content {
-    position: relative;
-    max-width: 70%;
-    z-index: 2;
-    padding-left: 40px;
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 0px 5px black;
+  z-index: -2;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%; /* Stín zleva */
+  height: 100%;
+  background: linear-gradient(to right, black, rgba(0, 0, 0, 0));
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  max-width: 70%;
+  z-index: 2;
+  padding-left: 40px;
+}
+
+.people-box {
+  display: flex;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+.small-img {
+  margin-top: 45px;
+  width: 158px;
+  height: 218px;
+}
+
+.all-people {
+  margin-top: 50px;
+}
+
+.director {
+  margin: 00px 0px 0px 20px;
+  border-bottom: 1px solid #868686;
+  border-top: 1px solid #868686;
+  padding: 15px;
+  padding-left: 0;
+}
+
+.people {
+  margin: 0px 0px 0px 20px;
+  border-bottom: 1px solid #868686;
+  padding: 15px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.role {
+  color: #e5e5e5;
+  font-size: 18px;
+}
+
+.person {
+  color: #868686;
+  font-size: 18px;
+}
+
+.actor-list {
+  display: inline;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+p.info {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.genres {
+  display: flex;
+  gap: 10px;
+}
+
+.genre {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.description {
+  display: block;
+  color: #e5e5e5;
+  margin: 20px 50px;
+  font-size: 18px;
+}
+
+.description span {
+  color: #868686;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.trailer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.trailer iframe {
+  pointer-events: auto;
+}
+
+/* Responzivní úprava pro mobily */
+@media (max-width: 768px) {
+  .page {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 40vh;
   }
 
   .people-box {
-    display: flex;
-    margin-left: 50px;
-    margin-bottom: 20px;
+    margin-left: 0px;
   }
-
+  
   .small-img {
-    margin-top: 45px;
-    width: 158px;
-    height: 218px;
+    display: none;
   }
 
-  .all-people {
-    margin-top: 50px;
-  }
-
-  .director {
-    margin: 00px 0px 0px 20px;
-    border-bottom: 1px solid #868686;
-    border-top: 1px solid #868686;
-    padding: 15px;
-    padding-left: 0;
-  }
-
-  .people {
-    margin: 0px 0px 0px 20px;
-    border-bottom: 1px solid #868686;
-    padding: 15px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .role {
-    color: #e5e5e5;
-    font-size: 18px;
-  }
-
-  .person {
-    color: #868686;
-    font-size: 18px;
-  }
-
-  .actor-list {
-    display: inline;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-  
-  p.info {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  
-  .genres {
+  .content {
     display: flex;
-    gap: 10px;
-  }
-  
-  .genre {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-
-  .description {
-    display: block;
-    color: #e5e5e5;
-    margin: 20px 50px;
-    font-size: 18px;
-  }
-
-  .description span {
-    color: #868686;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .trailer {
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    max-width: 90%;
+    height: 40vh;
+    padding: 0;
+    margin: 0;
     position: relative;
-    z-index: 10;
   }
 
-  .trailer iframe {
-    pointer-events: auto;
-  }
-  
-  /* Responzivní úprava pro mobily */
-@media (max-width: 768px) {
-    .page {
-      margin: 0;
-      padding: 0;
-      flex-direction: column-reverse;
-      justify-content: start;
-      min-height: 40vh;
-    }
-
-    .people-box {
-      margin-left: 0px;
-    }
-    
-    .small-img {
-      display: none;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 200%;
-      padding: 0;
-      margin: 0;
-    }
-
-    .content h1 {
-      border-bottom: 2px solid #868686;
-      text-align: center;
-      font-size: 25px;
-      margin: 15px 0px 0px 0px;
-    }
-
-    p.info {
-      text-align: center;
-      margin: 5px 0 0 0;
-    }
-
-    .genres {
-      flex-wrap: wrap;
-    }
-
-    .background {
-      width: 100vw;
-      height: 50vh;
-      position: relative;
-      height: 200px;
-      box-shadow: 0px 0px 5px rgb(0, 0, 0);
-    }
-
-    p.info {
-      font-size: 0.9rem; /* Zmenší text na mobilu */
-    }
-
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        margin-left: 15px;
-      }
-
-      .genre {
-        font-size: 0.8rem;
-      }
-
-      .description {
-        margin: 20px 20px;
-      }
-
-      .trailer {
-        margin-bottom: 10px;
-      }
+  .content h1 {
+    border-bottom: 2px solid #868686;
+    text-align: center;
+    font-size: 25px;
+    margin: 15px 0px 0px 0px;
   }
 
-  
+  p.info {
+    text-align: center;
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+  }
+
+  .genres {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .background {
+    margin-top: 120px;
+    max-height: 200px;
+    width: 100vw;
+    position: relative;
+    /* height: 200px; */
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+  }
+
+    .genre {
+      font-size: 0.6rem;
+      padding: 5px 5px;
+    }
+
+    .description {
+      margin: 20px 20px;
+    }
+
+    .trailer {
+      margin-bottom: 10px;
+    }
+}
