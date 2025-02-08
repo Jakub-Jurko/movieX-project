@@ -45,7 +45,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/all-serials" onClick={() => setShowMenu(false)}>
-                Seriály
+               Seriály
               </NavLink>
             </li>
             {/* Přihlašovací sekce */}

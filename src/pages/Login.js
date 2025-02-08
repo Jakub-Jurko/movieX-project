@@ -2,6 +2,8 @@ import { useState } from "react";
 import { projectAuth, googleProvider } from "../firebase/config";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"
+import { BsGoogle } from "react-icons/bs";
+import backgroundImage from "../images/background-moviex.jpg"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,20 +33,23 @@ const Login = () => {
   return (
     <div className="login-page">
       <div
-          className="background"
+          className="background-login"
           style={{
-            backgroundImage: `url(./images/background.jpg)`,
+            backgroundImage: `url(${backgroundImage})`,
           }}
         ></div>
-      <h2>Přihlášení</h2>
-      <button onClick={handleGoogleLogin}>Přihlásit se přes Google</button>
+        <div className="login-form">
+        <h2>Přihlas se k movieX</h2>
+      <button onClick={handleGoogleLogin}><span className="google-logo"><BsGoogle /></span>Použít účet Google</button>
       {error && <p>{error}</p>}
       <form onSubmit={handleLogin} className="email-login">
-        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Heslo" onChange={(e) => setPassword(e.target.value)} />
+        <input className="input-login" type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
+        <input className="input-login" type="password" placeholder="Heslo" onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Přihlásit se</button>
       </form>
     </div>
+        </div>
+      
   );
 };
 
