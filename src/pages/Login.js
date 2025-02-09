@@ -23,13 +23,15 @@ const Login = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      const result = await projectAuth.signInWithPopup(googleProvider);
-      console.log("Přihlášený uživatel:", result.user); 
-      navigate("/");     
+        googleProvider.setCustomParameters({ prompt: "select_account" }); // Vynutí výběr účtu
+        const result = await projectAuth.signInWithPopup(googleProvider);
+        console.log("Přihlášený uživatel:", result.user);
+        navigate("/");
     } catch (error) {
-      console.error("Chyba při přihlášení přes Google:", error.message);
-    } 
-  };
+        console.error("Chyba při přihlášení přes Google:", error.message);
+    }
+};
+
 
   return (
     <div className="login-page">

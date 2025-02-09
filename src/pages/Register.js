@@ -23,7 +23,8 @@ const Register = () => {
 
   const handleGoogleRegister = async () => {
     try {
-      const res = await projectAuth.signInWithPopup(googleProvider);
+      googleProvider.setCustomParameters({ prompt: "select_account" })
+      await projectAuth.signInWithPopup(googleProvider);
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -56,7 +57,7 @@ const Register = () => {
           />
           <button type="submit">Registrovat se</button>
         </form>
-        <p class="divider-text">nebo</p>
+        <p className="divider-text">nebo</p>
 
         <button className="google-register" onClick={handleGoogleRegister}>
           <BsGoogle />
