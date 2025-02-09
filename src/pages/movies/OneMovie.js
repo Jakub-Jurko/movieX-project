@@ -1,16 +1,14 @@
 import "./OneMovie.css";
 import { useParams } from "react-router-dom";
-import { projectFirestore } from "../../firebase/config";
 import { useState, useEffect } from "react";
-import { projectAuth } from "../../firebase/config";
-import Rating from "../../components/Rating"; // Importuj komponentu Rating
+import { projectAuth, projectFirestore } from "../../firebase/config";
+import Ratings from "../../components/Ratings"; // Importuj komponentu Rating
 import Trailer from "../trailers/Trailer";
-import { FaStar } from "react-icons/fa";
+import Rating from "../../components/Rating";
 
 const OneMovie = () => {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
-  const [averageRating, setAverageRating] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const user = projectAuth.currentUser;
   const { movieId } = useParams();
@@ -31,29 +29,7 @@ const OneMovie = () => {
       .catch((err) => {
         setError(err.message);
       });
-
-    // Načítání průměrného hodnocení
-    projectFirestore
-      .collection("movies")
-      .doc(movieId)
-      .collection("ratings")
-      .get()
-      .then((snapshot) => {
-        let total = 0;
-        let count = 0;
-        snapshot.forEach((doc) => {
-          total += doc.data().rating;
-          count++;
-        });
-        if (count > 0) {
-          setAverageRating((total / count).toFixed(1));
-        } else {
-          setAverageRating(0);
-        }
-      }).catch((error) => {
-        setAverageRating(0)
-      })
-  },);
+  }, [movieId]);
 
   const shortText =
     data.description && data.description.length > maxLength
@@ -85,10 +61,8 @@ const OneMovie = () => {
                 </p>
               ))}
           </div>
-          <p className="ratings">
-        <FaStar className="fa-star" /> {averageRating}
-      </p>
-        </div>        
+          <Ratings movieId={movieId} />         
+        </div>
       </div>
 
       <div className="people-box">
@@ -125,20 +99,17 @@ const OneMovie = () => {
                   </span>
                 ))}
             </span>
-          </p>
+          </p>          
         </div>
-        <Rating
-            movieId={movieId}
-            user={user}
-            averageRating={averageRating}
-            setAverageRating={setAverageRating}
-          />
+        <div className="rating">
+        <Rating movieId={movieId} user={user} />
+        </div>
       </div>
 
       <p className="description">
         {isExpanded ? data.description : shortText}{" "}
         {data.description && data.description.length > maxLength && (
-          <span onClick={() => setIsExpanded(!isExpanded)}>
+          <span className="desc" onClick={() => setIsExpanded(!isExpanded)}>
             {isExpanded ? " méně" : " více"}
           </span>
         )}

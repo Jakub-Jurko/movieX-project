@@ -12,6 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await projectAuth.signOut();
+    setShowMenu(false)
   };
 
   return (

@@ -1,0 +1,19 @@
+.ratings-container {
+    display: flex;
+    width: 70px;
+    justify-content: space-between;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.fa-star {
+    color: gold;
+}
+
+/* Responzivní úprava pro mobily */
+@media (max-width: 768px) {
+    .ratings-container {
+        width: 40px;
+        font-size: 15px;
+    }
+}
