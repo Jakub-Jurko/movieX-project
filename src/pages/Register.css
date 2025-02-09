@@ -1,0 +1,156 @@
+.register-page {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: #e5e5e5;
+  padding: 0;
+  z-index: 1;
+}
+
+.register-form h2 {
+  font-size: 30px;
+  opacity: 1;
+  color: #ffffff;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(8, 8, 8, 0.7);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.email-register {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 30px;
+}
+
+.register-page button {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  align-items: center;
+  margin: 20px 0px;
+  padding: 10px 20px 10px 20px;
+  width: 400px;
+  font-size: 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 50px;
+  font-weight: bold;
+  background-color: rgb(29, 29, 29, 0.6);
+  color: #e5e5e5;
+  cursor: pointer;
+}
+
+.background-register {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: blur(7px);
+  width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+.input-register {
+  background-color: rgb(29, 29, 29, 0.6);
+  color: #e5e5e5;
+  margin: 5px;
+  padding: 10px 30px 10px 20px;
+  border: none;
+  font-size: 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+
+.input-register::placeholder {
+    color: #979797;
+    font-size: 16px;
+}
+
+.register-page button[type="submit"] {
+    justify-content: center;
+    padding-right: 30px;
+}
+
+.google-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider-text {
+    width: 400px;
+    text-align: center; /* Uspořádá text na střed */
+    position: relative;
+    margin: 20px 0; /* Okraje kolem odstavce */
+  }
+  
+  .divider-text::before,
+  .divider-text::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* Umístí čáru do středu */
+    width: 40%; /* Délka čáry na obou stranách */
+    border-top: 1px solid #e5e5e5; /* Tloušťka a barva čáry */
+  }
+  
+  .divider-text::before {
+    left: 0; /* Čára na levé straně textu */
+  }
+  
+  .divider-text::after {
+    right: 0; /* Čára na pravé straně textu */
+  }
+  
+  .divider-text span {
+    background-color: white; /* Pozadí pro text, aby text byl nad čárou */
+    padding: 0 10px; /* Okraje kolem textu */
+  }
+  
+  
+
+/* Responzivní úprava pro mobily */
+@media (max-width: 768px) {
+    .register-page{
+      overflow: hidden;
+      height: 90vh;
+    }
+  
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 90vw;
+      align-items: center;
+      background-color: rgba(8, 8, 8, 0.7);
+      padding: 20px;
+      margin: 20px 0px;
+      /* opacity: 0.6; */
+      border-radius: 5px;
+    }
+  
+    .register-page button {
+      padding-right: 10px;
+      gap: 20px;
+      max-width: 80vw;
+      padding-right: 10px;
+    }
+
+    .divider-text {
+        max-width: 80vw;
+    }
+  }

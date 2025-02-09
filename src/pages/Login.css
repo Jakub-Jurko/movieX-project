@@ -24,14 +24,13 @@
   align-items: center;
   background-color: rgba(8, 8, 8, 0.7);
   padding: 20px;
-  /* opacity: 0.6; */
   border-radius: 5px;
 }
 
 .login-page button {
   display: flex;
-  justify-content: start;
-  gap: 100px;
+  justify-content: center;
+  gap: 60px;
   align-items: center;
   margin: 20px 0px;
   padding: 10px 20px 10px 20px;
