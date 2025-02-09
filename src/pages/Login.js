@@ -24,10 +24,11 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await projectAuth.signInWithPopup(googleProvider);
-      console.log("Přihlášený uživatel:", result.user);
+      console.log("Přihlášený uživatel:", result.user); 
+      navigate("/");     
     } catch (error) {
       console.error("Chyba při přihlášení přes Google:", error.message);
-    }
+    } 
   };
 
   return (

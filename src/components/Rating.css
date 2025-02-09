@@ -1,0 +1,15 @@
+.fa-star {
+    color: rgb(255, 255, 108);
+  }
+  
+  .rating-container {
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  
+  .ratings {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
