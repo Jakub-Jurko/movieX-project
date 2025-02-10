@@ -1,7 +1,29 @@
 body {
+    position: relative;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #1d1d1d;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+body::before,
+    body::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 20%; /* Nastav šířku stínu */
+        max-width: 100px; /* Můžeš upravit podle potřeby */
+        background: linear-gradient(to right, #000000af, transparent);
+        z-index: -1;
+    }
+
+    body::before {
+        left: 0;
+    }
+
+    body::after {
+        right: 0;
+        transform: scaleX(-1);
+    }

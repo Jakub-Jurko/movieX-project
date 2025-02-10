@@ -61,7 +61,7 @@ const OneMovie = () => {
                 </p>
               ))}
           </div>
-          <Ratings movieId={movieId} />         
+          <Ratings width={70} fontSize={25} movieId={movieId} />         
         </div>
       </div>
 

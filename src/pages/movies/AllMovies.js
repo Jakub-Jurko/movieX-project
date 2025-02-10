@@ -35,22 +35,24 @@ const Allmovies = () => {
   }, []);
 
   return (
-    <div className="all-movies">
+    <div className="movies-container">
       <Carousel />
       {error && <p>{error}</p>}
+      <div className="all-movies">
       {data.map((oneMovie) => {
         const { id, title, small_img_url } = oneMovie;
 
         return (
-          <div className="movie-container" key={id}>
-            <NavLink to={`/one-movie/${id}`} className="one-movie">
-              <img src={small_img_url} alt="" className="img" />
-              <Ratings movieId={id} />
-              <p className="title">{title}</p>
+          <div className="one-movie" key={id}>
+            <NavLink to={`/one-movie/${id}`}>
+              <img className="movie-img" src={small_img_url} alt="" />
+              <p className="ratings"><Ratings movieId={id} width={60} fontSize={18}/></p>
+              <h4>{title}</h4>
             </NavLink>
           </div>
         );
       })}
+      </div>
     </div>
   );
 };
