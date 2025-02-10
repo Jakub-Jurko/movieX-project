@@ -10,7 +10,6 @@ const AddMovie = () => {
   const [Time, setTime] = useState(null);
   const [Description, setDescription] = useState("");
   const [YoutubeId, setYoutubeId] = useState("");
-  const [Evaluatedi, setEvaluatedi] = useState(null);
   const [Actors, setActors] = useState([]);
   const [Director, setDirector] = useState("");
   const [Scenario, setScenario] = useState("");
@@ -42,7 +41,6 @@ const AddMovie = () => {
       time: parseInt(Time),
       description: Description,
       youtube_id: YoutubeId,
-      evaluatedi: parseInt(Evaluatedi),
       director: Director,
       scenario: Scenario,
       small_img_url: SmallImgUrl,
@@ -60,7 +58,6 @@ const AddMovie = () => {
       setTime(null);
       setDescription("");
       setYoutubeId("");
-      setEvaluatedi(null);
       setActors([]);
       setDirector("");
       setScenario("");
@@ -129,8 +126,6 @@ const AddMovie = () => {
           type="number"
           placeholder="Hodnocení"
           min="1"
-          onChange={(e) => setEvaluatedi(e.target.value)}
-          value={Evaluatedi}
         />
 
         <input
