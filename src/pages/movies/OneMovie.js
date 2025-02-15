@@ -13,7 +13,6 @@ const OneMovie = () => {
   const user = projectAuth.currentUser;
   const { movieId } = useParams();
   const maxLength = 200;
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     projectFirestore

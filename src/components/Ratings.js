@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { projectFirestore } from "../firebase/config";
 import "./Ratings.css"
-import RatingModal from "./RatingModal";
 
 const Ratings = ({ movieId }) => {
   const [averageRating, setAverageRating] = useState(0);
