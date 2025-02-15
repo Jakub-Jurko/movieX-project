@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { projectAuth, projectFirestore } from "../../firebase/config";
 import Ratings from "../../components/Ratings"; // Importuj komponentu Rating
 import Trailer from "../trailers/Trailer";
-import Rating from "../../components/Rating";
+import RatingModal from "../../components/RatingModal";
 
 const OneMovie = () => {
   const [data, setData] = useState({});
@@ -13,6 +13,7 @@ const OneMovie = () => {
   const user = projectAuth.currentUser;
   const { movieId } = useParams();
   const maxLength = 200;
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     projectFirestore
@@ -39,6 +40,7 @@ const OneMovie = () => {
   return (
     <section className="one-movie-section">
       {error && <p>{error}</p>}
+      
 
       <div className="page">
         <div
@@ -47,12 +49,19 @@ const OneMovie = () => {
             backgroundImage: `url(${data.large_img_url})`,
           }}
         ></div>
+        
 
         <div className="content">
+          <div className="title">
           <h1>{data.title}</h1>
           <p className="info">
             {data.year} • {data.min_age}+ • {data.time} min
           </p>
+          </div>
+          <img src={data.large_img_url} alt="mobile-img" className="mobile-img" />
+          
+          
+          
           <div className="genres">
             {data.genres &&
               data.genres.map((genre, id) => (
@@ -61,7 +70,10 @@ const OneMovie = () => {
                 </p>
               ))}
           </div>
-          <Ratings width={70} fontSize={25} movieId={movieId} />         
+          <div className="ratings">
+            <Ratings movieId={movieId} />
+            <RatingModal movieId={movieId} user={user} title={data.title} />
+          </div>
         </div>
       </div>
 
@@ -69,15 +81,15 @@ const OneMovie = () => {
         <img src={data.small_img_url} alt="" className="small-img" />
         <div className="all-people">
           <p className="director">
-            <span className="role">Réžie: </span>
+            <span className="role">Réžie </span>
             <span className="person">{data.director}</span>
           </p>
           <p className="people">
-            <span className="role">Scénař: </span>
+            <span className="role">Scénař </span>
             <span className="person">{data.scenario}</span>
           </p>
           <p className="people">
-            <span className="role">Hrají: </span>
+            <span className="role">Hrají </span>
             <span className="actor-list">
               {data.actors &&
                 data.actors.map((actor, id) => (
@@ -89,7 +101,7 @@ const OneMovie = () => {
             </span>
           </p>
           <p className="people">
-            <span className="role">Země: </span>
+            <span className="role">Země </span>
             <span className="actor-list">
               {data.country &&
                 data.country.map((state, id) => (
@@ -99,10 +111,7 @@ const OneMovie = () => {
                   </span>
                 ))}
             </span>
-          </p>          
-        </div>
-        <div className="rating">
-        <Rating movieId={movieId} user={user} />
+          </p>
         </div>
       </div>
 

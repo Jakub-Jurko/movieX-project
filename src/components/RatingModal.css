@@ -1,0 +1,73 @@
+.btn {
+    border: none;
+    color: #fcff67;
+    font-size: clamp(14px, 5vw, 22px);
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.modal-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0px 0px 10px black;
+    transform: translate(-50%, -50%);
+    background-color: rgb(10, 10, 10);
+    width: min(80vw, 600px);
+    height: clamp(200px, 40vw, 300px);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-window h2 {
+    margin: 0;
+    color: grey;
+}
+
+.rate-button {
+    background-color: rgb(88, 88, 88);
+    border: none;
+    color: #e5e5e5;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 50%;
+    cursor: pointer;
+}
+
+.close-button {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: -15px;
+    margin-left: 10px;
+    background-color: transparent;
+    font-size: clamp(15px, 3vw, 25px);
+    border-radius: 30px;
+    border: none;
+    color: #e5e5e5;
+    cursor: pointer;
+}
+
+.stars {
+    margin-left: 0;
+    font-size: clamp(20px, 5vw, 40px);
+}

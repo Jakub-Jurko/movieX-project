@@ -1,18 +1,18 @@
 .ratings-container {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    align-items: center;
     gap: 5px;
     font-weight: bold;
+    font-size: clamp(14px, 5vw, 22px);
+}
+
+.full-rating {
+    font-weight: lighter;
 }
 
 .fa-star {
     color: gold;
-}
-
-/* Responzivní úprava pro mobily */
-@media (max-width: 768px) {
-    .ratings-container {
-        width: 40px;
-        font-size: 15px;
-    }
+    padding-bottom: 4px;
+    font-size: clamp(14px 5vw, 22px);
 }

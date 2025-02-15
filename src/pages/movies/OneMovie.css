@@ -10,13 +10,18 @@
   justify-content: flex-start;
   color: #e5e5e5;
   padding: 0;
+  overflow: hidden;
+}
+
+.mobile-img {
+  display: none;
 }
 
 .background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   background-size: cover;
   background-position: top;
@@ -36,21 +41,20 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  max-width: 70%;
-  z-index: 2;
+  max-width: 90vw;
+  height: 80vh;
+  z-index: 100;
   padding-left: 40px;
 }
 
 .people-box {
   display: flex;
-  margin-left: 50px;
-  margin-bottom: 20px;
-}
-
-.rating {
-  margin-top: 48px;
-  margin-left: 30px;
+  margin: 20px 50px;
+  font-size: clamp(13px, 2.3vw, 20px);  
 }
 
 .small-img {
@@ -61,6 +65,9 @@
 
 .all-people {
   margin-top: 50px;
+  margin-right: 50px;
+  width: 100%;
+  padding-left: 0px;
 }
 
 .director {
@@ -68,25 +75,29 @@
   border-bottom: 1px solid #868686;
   border-top: 1px solid #868686;
   padding: 15px;
+  width: 100%;
   padding-left: 0;
+}
+
+.people-box img {
+  box-shadow: 0px 0px 5px black;
 }
 
 .people {
   margin: 0px 0px 0px 20px;
   border-bottom: 1px solid #868686;
-  padding: 15px;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 15px 15px 15px 0px;
+  width: 100%;
 }
 
 .role {
   color: #e5e5e5;
-  font-size: 18px;
+  /* font-weight: bold; */
+  margin-right: 10px;
 }
 
 .person {
-  color: #868686;
-  font-size: 18px;
+  color: #c5ff58;
 }
 
 .actor-list {
@@ -94,13 +105,14 @@
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: clamp(14px, 6vw, 50px);
   margin-bottom: 10px;
 }
 
 p.info {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: clamp(10px, 4vw, 20px);
+  margin-bottom: 5px;
+  margin-left: 2px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -108,19 +120,31 @@ p.info {
 .genres {
   display: flex;
   gap: 10px;
+  width: 90vw;
 }
 
 .genre {
   background: rgba(255, 255, 255, 0.2);
+  font-size: clamp(6px, 1.5vw, 16px);
   padding: 5px 10px;
+  margin-top: 5px;
   border-radius: 5px;
+}
+
+.ratings {
+  display: flex;
+  width: auto;
+  font-size: clamp(8px, 2vw, 22px);
+  gap: 10px;
+  padding-top: 0px;
+  margin-top: 5px;
 }
 
 .description {
   display: block;
   color: #e5e5e5;
   margin: 20px 50px;
-  font-size: 18px;
+  font-size: clamp(13px, 2.3vw, 20px); 
 }
 
 .desc {
@@ -146,25 +170,15 @@ p.info {
 @media (max-width: 768px) {
   .page {
     display: flex;
-    margin: 0;
-    padding: 0;
     flex-direction: column;
-    justify-content: start;
     align-items: center;
-    height: 340px;
-  }
-
-  .people-box {
-    flex-direction: column-reverse;
     justify-content: center;
-    align-items: center;
-    margin-left: 0px;
+    height: auto;
+    padding: 20px 0px;
+    overflow: hidden;
   }
 
-  .rating {
-    margin: 0;
-  }
-  
+  .background,
   .small-img {
     display: none;
   }
@@ -173,50 +187,94 @@ p.info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 100vw;
-    max-height: 340px;
+    justify-content: center;
+    text-align: center;
+    padding-left: 0;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .mobile-img {
+    display: block;
+    width: 100vw;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px black;
+  }
+
+  .ratings {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: auto;
+  }
+
+  .all-people {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .people,
+  .director {
+    margin: 0px 10px;
+  }
+
+  .people-box {
+    display: flex;
+    flex-direction: column; /* Lidé pod sebou */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    width: 95vw;
+  }
+
+  .all-people {
+    text-align: start;
+    width: 90%;
     padding: 0;
-    margin: 0;
-    position: relative;
   }
 
-  .content h1 {
-    border-bottom: 2px solid #868686;
-    text-align: center;
-    font-size: 25px;
-    margin: 15px 0px 0px 0px;
+  .description {
+    width: 95%;
+    text-align: start;
+    margin: 20px;
   }
 
-  p.info {
-    text-align: center;
-    margin: 5px 0 0 0;
-    font-size: 0.9rem;
+  .trailer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .trailer iframe {
+    width: 90%;
+    height: auto;
   }
 
   .genres {
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 5px;
   }
 
-  .background {
-    margin-top: 120px;
-    max-height: 200px;
-    width: 100vw;
-    position: absolute;
-    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+  .ratings {
+    justify-content: center;
+    /* height: 50px; */
   }
 
-    .genre {
-      font-size: 0.6rem;
-      padding: 5px 5px;
-      margin: 5px 0px;
-    }
+  .title {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    align-items: start;
+    margin-bottom: 20px;
+  }
 
-    .description {
-      margin: 20px 20px;
-    }
-
-    .trailer {
-      margin-bottom: 10px;
-    }    
+  .info {
+    margin: 0;
+  }
 }

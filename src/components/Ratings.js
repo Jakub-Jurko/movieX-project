@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { projectFirestore } from "../firebase/config";
 import "./Ratings.css"
+import RatingModal from "./RatingModal";
 
-const Ratings = ({ movieId, fontSize, width }) => {
+const Ratings = ({ movieId }) => {
   const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
@@ -45,9 +46,9 @@ const Ratings = ({ movieId, fontSize, width }) => {
   
 
   return (
-    <div className="ratings-container" style={{ width: `${width}px`, fontSize: `${fontSize}px`}}>
+    <div className="ratings-container">
       <FaStar className="fa-star" />
-      <span>{averageRating}</span>
+      <span>{averageRating}<span className="full-rating">/10</span></span>
     </div>
   );
 };

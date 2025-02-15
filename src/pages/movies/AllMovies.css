@@ -45,7 +45,7 @@
   font-size: 14px;
 }
 
-.ratings {
+/* .ratings {
   position: absolute;
   padding-left: 25px;
   padding-top: 180px;
@@ -54,7 +54,7 @@
   z-index: 1;
   color: white;
   font-size: 18px;
-}
+} */
 
 .one-movie h4 {
   z-index: 1;

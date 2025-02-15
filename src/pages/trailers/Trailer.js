@@ -4,7 +4,7 @@ const Trailer = ({ videoId }) => {
   return <div className="trailer">
       <iframe
               className="video"
-              src={`https://www.youtube.com/embed/${videoId}`}
+              src={`https://www.youtube.com/embed/${videoId}?wmode=opaque"}`}
               style={{ aspectRatio: "16 / 9" }}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
