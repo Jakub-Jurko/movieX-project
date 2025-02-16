@@ -12,7 +12,6 @@ const AllSerials = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
 
   useEffect(() => {
     const unsubscribe = projectFirestore.collection("serials").onSnapshot(
