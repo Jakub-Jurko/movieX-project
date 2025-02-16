@@ -120,6 +120,13 @@
     background-color: white; /* Pozadí pro text, aby text byl nad čárou */
     padding: 0 10px; /* Okraje kolem textu */
   }
+
+  .grid-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
   
   
 

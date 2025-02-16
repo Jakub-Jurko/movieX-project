@@ -17,7 +17,6 @@
   box-shadow: 0px 0px 10px black;
   color: #e5e5e5;
   height: auto;
-  /* height: 285px; */
   margin: 10px 10px;
   overflow: hidden;
   border-radius: 10px;
@@ -74,6 +73,9 @@
   font-size: clamp(8px, 3vw, 16px);
 }
 
-/* Responzivní úprava pro mobily */
-@media (max-width: 768px) {
+.grid-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }

@@ -167,6 +167,13 @@ p.info {
   pointer-events: auto;
 }
 
+.grid-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
 /* Responzivní úprava pro mobily */
 @media (max-width: 768px) {
   .page {

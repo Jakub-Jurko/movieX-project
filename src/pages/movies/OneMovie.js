@@ -5,6 +5,7 @@ import { projectAuth, projectFirestore } from "../../firebase/config";
 import Ratings from "../../components/Ratings"; // Importuj komponentu Rating
 import Trailer from "../trailers/Trailer";
 import RatingModal from "../../components/RatingModal";
+import { GridLoader } from "react-spinners";
 
 const OneMovie = () => {
   const [data, setData] = useState({});
@@ -13,6 +14,7 @@ const OneMovie = () => {
   const user = projectAuth.currentUser;
   const { movieId } = useParams();
   const maxLength = 200;
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     projectFirestore
@@ -22,8 +24,10 @@ const OneMovie = () => {
       .then((document) => {
         if (document.exists) {
           setData(document.data());
+          setLoading(false)
         } else {
           setError("Nenašli jsme tento film");
+          setLoading(false)
         }
       })
       .catch((err) => {
@@ -39,8 +43,11 @@ const OneMovie = () => {
   return (
     <section className="one-movie-section">
       {error && <p>{error}</p>}
-      
-
+      {loading ? (
+        <div className="grid-loader">
+        <GridLoader color='#727D73' size={30}/>
+    </div>
+      ) : (
       <div className="page">
         <div
           className="background"
@@ -75,6 +82,7 @@ const OneMovie = () => {
           </div>
         </div>
       </div>
+      )}
 
       <div className="people-box">
         <img src={data.small_img_url} alt="" className="small-img" />

@@ -42,7 +42,7 @@ const RatingModal = ({ movieId, user, title }) => {
       toast.error("Musíš se přihlásit, abys mohl/a hodnotit.", {
         position: "top-center",
         className: "alert",
-        autoClose: 2500,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -58,7 +58,7 @@ const RatingModal = ({ movieId, user, title }) => {
       toast.info("Už jsi tento film hodnotil/a.", {
         position: "top-center",
         className: "alert",
-        autoClose: 2500,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -85,7 +85,7 @@ const RatingModal = ({ movieId, user, title }) => {
       toast.success("Hodnocení uloženo!", {
         position: "top-center",
         className: "alert",
-        autoClose: 2500,
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,

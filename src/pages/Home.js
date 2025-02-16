@@ -1,7 +1,11 @@
+import { GridLoader } from 'react-spinners'
+import "./Home.css"
 
 const Home = () => {
     return (
-        <h1>Home</h1>
+        <div className="grid-loader">
+            <GridLoader color='#727D73' size={30}/>
+        </div>
     );
 };
 

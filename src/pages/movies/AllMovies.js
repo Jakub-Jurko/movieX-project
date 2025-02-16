@@ -7,10 +7,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import Ratings from "../../components/Ratings";
 import PercentageDisplay from "../../components/PercentageDisplay";
+import { GridLoader } from 'react-spinners'
+
 
 const Allmovies = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsubscribe = projectFirestore.collection("movies").onSnapshot(
@@ -25,15 +28,25 @@ const Allmovies = () => {
           });
           setData(results);
         }
+        setLoading(false)
       },
       (err) => {
         setError(err.message);
+        setLoading(false)
       }
     );
     return () => {
       unsubscribe();
     };
   }, []);
+
+  if(loading) {
+    return (
+      <div className="grid-loader">
+            <GridLoader color='#727D73' size={30}/>
+        </div>
+    )
+  }
 
   return (
     <div>
