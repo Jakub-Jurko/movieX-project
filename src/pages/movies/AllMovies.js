@@ -1,11 +1,12 @@
-import "./AllMovies.css";
+import styles from "./AllMovies.module.css";
 import { useEffect, useState } from "react";
 import { projectFirestore } from "../../firebase/config";
 import { NavLink } from "react-router-dom";
 import Carousel from "../../components/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Ratings from "../../components/Ratings";
+// import Ratings from "../../components/Ratings";
+import PercentageDisplay from "../../components/PercentageDisplay";
 
 const Allmovies = () => {
   const [data, setData] = useState([]);
@@ -35,23 +36,25 @@ const Allmovies = () => {
   }, []);
 
   return (
-    <div className="movies-container">
+    <div>
       <Carousel />
       {error && <p>{error}</p>}
-      <div className="all-movies">
-      {data.map((oneMovie) => {
-        const { id, title, small_img_url } = oneMovie;
+      <div className={styles['all-movies']}>
+        {data.map((oneMovie) => {
+          const { id, title, small_img_url } = oneMovie;
 
-        return (
-          <div className="one-movie" key={id}>
-            <NavLink to={`/one-movie/${id}`}>
-              <img className="movie-img" src={small_img_url} alt="" />
-              <p className="ratings"><Ratings movieId={id} width={60} fontSize={18}/></p>
-              <h4>{title}</h4>
-            </NavLink>
-          </div>
-        );
-      })}
+          return (
+            <div className={styles['one-movie']} key={id}>
+              <NavLink to={`/one-movie/${id}`}>
+                <img className={styles['movie-img']} src={small_img_url} alt="" />
+                <p className={styles.percenta}>
+                  <PercentageDisplay movieId={id} />
+                </p>
+                <h4>{title}</h4>
+              </NavLink>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { projectFirestore } from "../firebase/config";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./RatingModal.css";
 
 const RatingModal = ({ movieId, user, title }) => {
@@ -37,12 +39,34 @@ const RatingModal = ({ movieId, user, title }) => {
 
   const handleSaveRating = async () => {
     if (!user) {
-      alert("Musíš se přihlásit, abys mohl/a hodnotit.");
+      toast.error("Musíš se přihlásit, abys mohl/a hodnotit.", {
+        position: "top-center",
+        className: "alert",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        icon: false,
+        theme: "dark",
+        closeButton: false,
+      });
       return;
     }
 
     if (hasRated) {
-      alert("Už jsi tento film ohodnotil/a.");
+      toast.info("Už jsi tento film hodnotil/a.", {
+        position: "top-center",
+        className: "alert",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        icon: false,
+        theme: "dark",
+        closeButton: false,
+      });
       return;
     }
 
@@ -57,39 +81,59 @@ const RatingModal = ({ movieId, user, title }) => {
       setRating(selectedRating);
       setHasRated(true);
       setIsOpen(false);
-      alert("Hodnocení uloženo!");
+      
+      toast.success("Hodnocení uloženo!", {
+        position: "top-center",
+        className: "alert",
+        autoClose: 2500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        icon: false,
+        theme: "dark",
+        closeButton: false,
+      });
+
     } catch (error) {
       console.error("Chyba při ukládání hodnocení:", error);
+      toast.error("Chyba při ukládání hodnocení!", {
+        position: "top-center",
+        autoClose: 2000,
+      });
     }
   };
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"; // Zakáže scroll
+      setSelectedRating(rating || 0);
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; // Povolit scroll po zavření
+      document.body.style.overflow = "auto";
     }
-    
+
     return () => {
-      document.body.style.overflow = "auto"; // Reset při unmountu
+      document.body.style.overflow = "auto";
     };
-  }, [isOpen]);
-  
+  }, [isOpen, rating]);
 
   return (
     <div>
+      {/* ToastContainer musí být v JSX */}
+      <ToastContainer />
+
       <button onClick={() => setIsOpen(true)} className="btn">
         <FaRegStar />
       </button>
 
       {isOpen && (
         <div className="modal-overlay">
-            <div className="modal-window">
-              <button onClick={() => setIsOpen(false)} className="close-button">
-                <IoMdClose />
-              </button>
-                <h2>Hodnocení:</h2>
-                <h2>"{title}"</h2>
+          <div className="modal-window">
+            <button onClick={() => setIsOpen(false)} className="close-button">
+              <IoMdClose />
+            </button>
+            <h2>Hodnocení:</h2>
+            <h2>"{title}"</h2>
             <div className="stars">
               {[...Array(10)].map((_, index) => {
                 const starValue = index + 1;
@@ -112,12 +156,12 @@ const RatingModal = ({ movieId, user, title }) => {
             <button onClick={handleSaveRating} className="rate-button">
               Ohodnotit
             </button>
+          </div>
         </div>
-        </div>
-        
       )}
     </div>
   );
 };
 
 export default RatingModal;
+

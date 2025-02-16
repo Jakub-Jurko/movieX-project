@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
-import { HiOutlineStar } from "react-icons/hi";
 import { projectFirestore } from "../firebase/config";
-import "./Ratings.css";
+import "./PercentageDisplay.css";
 
-const Ratings = ({ movieId }) => {
+const PercentageDisplay = ({ movieId }) => {
   const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
@@ -46,23 +44,10 @@ const Ratings = ({ movieId }) => {
   const fillPercentage = (averageRating / 10) * 100;
 
   return (
-    <div className="ratings-container">
-      <div className="star-rating">
-        {/* Prázdná hvězda jako rámeček */}
-        <HiOutlineStar className="outline-star"/>
-        
-        {/* Vyplněná hvězda podle procenta */}
-        <FaStar 
-          className="fa-star" 
-          style={{
-            clipPath: `inset(0 ${100 - fillPercentage}% 0 0)` // Změní vyplnění hvězdy
-          }} 
-        />
-      </div>
-      {/* Zobrazení procenta místo 0-10 */}
-      <span className="percenta">{Math.round(fillPercentage)}%</span>
+    <div className="percentage-display">
+      <span>{Math.round(fillPercentage)}%</span>
     </div>
   );
 };
 
-export default Ratings;
+export default PercentageDisplay;

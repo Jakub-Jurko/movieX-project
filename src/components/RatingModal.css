@@ -53,6 +53,10 @@
     cursor: pointer;
 }
 
+.alert {
+    font-size: clamp(13px, 2.3vw, 16px);
+}
+
 .close-button {
     display: flex;
     justify-content: end;
@@ -71,3 +75,7 @@
     margin-left: 0;
     font-size: clamp(20px, 5vw, 40px);
 }
+
+.stars svg:hover {
+    transform: scale(1.2);
+  }
