@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./RatingModal.css";
 
-const RatingModal = ({ movieId, user, title }) => {
+const RatingModal = ({ id, user, title, collectionName }) => {
   const [rating, setRating] = useState(null);
   const [hasRated, setHasRated] = useState(false);
   const [hoverRating, setHoverRating] = useState(0);
@@ -19,8 +19,8 @@ const RatingModal = ({ movieId, user, title }) => {
     const checkUserRating = async () => {
       try {
         const userRatingDoc = await projectFirestore
-          .collection("movies")
-          .doc(movieId)
+          .collection(collectionName)
+          .doc(id)
           .collection("ratings")
           .doc(user.uid)
           .get();
@@ -35,7 +35,7 @@ const RatingModal = ({ movieId, user, title }) => {
     };
 
     checkUserRating();
-  }, [movieId, user]);
+  }, [ id, user, collectionName ]);
 
   const handleSaveRating = async () => {
     if (!user) {
@@ -72,8 +72,8 @@ const RatingModal = ({ movieId, user, title }) => {
 
     try {
       await projectFirestore
-        .collection("movies")
-        .doc(movieId)
+        .collection(collectionName)
+        .doc(id)
         .collection("ratings")
         .doc(user.uid)
         .set({ rating: selectedRating });

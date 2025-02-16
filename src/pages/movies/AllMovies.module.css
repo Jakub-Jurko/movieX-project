@@ -13,11 +13,11 @@
 
 .one-movie {
   background-color: #0f0f0f;
-  width: clamp(78px, 16.5vw, 140px);
+  width: clamp(100px, 16.5vw, 140px);
   box-shadow: 0px 0px 10px black;
   color: #e5e5e5;
   height: auto;
-  margin: 10px 10px;
+  margin: 10px 5px;
   overflow: hidden;
   border-radius: 10px;
   display: flex;
@@ -35,13 +35,13 @@
   margin-bottom: 0;
   margin-top: 0;
   padding: 5px;
-  width: clamp(20px, 5vw, 35px);
-  height: clamp(20px, 5vw, 35px);
+  width: clamp(25px, 5vw, 35px);
+  height: clamp(25px, 5vw, 35px);
   border-radius: 50px;
   box-shadow: 0px 0px 5px #505050;
   color: hsl(73, 100%, 72%);
   font-weight: bold;
-  font-size: clamp(10px, 2.8vw, 16px);
+  font-size: clamp(12px, 2.8vw, 16px);
 
 }
 
@@ -54,7 +54,7 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  height: clamp(117px, 22.5vw, 207px);
+  height: clamp(130px, 22.5vw, 207px);
   z-index: 1;
   -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 20%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 93%);
@@ -70,7 +70,7 @@
   margin-bottom: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  font-size: clamp(8px, 3vw, 16px);
+  font-size: clamp(12px, 3vw, 16px);
 }
 
 .grid-loader {

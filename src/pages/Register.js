@@ -31,6 +31,7 @@ const Register = () => {
     try {
       await projectAuth.createUserWithEmailAndPassword(email, password);
       navigate("/");
+      setLoading(false)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -44,6 +45,7 @@ const Register = () => {
       googleProvider.setCustomParameters({ prompt: "select_account" });
       await projectAuth.signInWithPopup(googleProvider);
       navigate("/");
+      setLoading(false)
     } catch (err) {
       setError(err.message);
     } finally {

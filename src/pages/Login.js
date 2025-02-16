@@ -31,6 +31,7 @@ const Login = () => {
     try {
       await projectAuth.signInWithEmailAndPassword(email, password);
       navigate("/");
+      setLoading(false)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -45,6 +46,7 @@ const Login = () => {
       const result = await projectAuth.signInWithPopup(googleProvider);
       console.log("Přihlášený uživatel:", result.user);
       navigate("/");
+      setLoading(false)
     } catch (error) {
       console.error("Chyba při přihlášení přes Google:", error.message);
     } finally {

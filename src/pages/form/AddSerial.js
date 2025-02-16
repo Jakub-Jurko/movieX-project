@@ -4,24 +4,36 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { projectFirestore } from "../../firebase/config";
 
-const AddMovie = () => {
+const AddSerial = () => {
   const [Title, setTitle] = useState("");
   const [Age, setAge] = useState(null);
-  const [Time, setTime] = useState(null);
   const [Description, setDescription] = useState("");
   const [YoutubeId, setYoutubeId] = useState("");
   const [Actors, setActors] = useState([]);
-  const [Director, setDirector] = useState("");
-  const [Scenario, setScenario] = useState("");
+  const [Creative, setCreative] = useState([]);
+  const [Director, setDirector] = useState([]);
+  const [Scenario, setScenario] = useState([]);
   const [SmallImgUrl, setSmallImgUrl] = useState("");
   const [LargeImgUrl, setLargeImgUrl] = useState("");
   const [Country, setCountry] = useState([]);
   const [Genres, setGenres] = useState([]);
   const [Year, setYear] = useState(null);
-  const { role } = useContext(AuthContext)
+  const { role } = useContext(AuthContext);
 
   const handleActorsChange = (e) => {
     setActors(e.target.value.split(","));
+  };
+
+  const handleCreativeChange = (e) => {
+    setCreative(e.target.value.split(","));
+  };
+
+  const handleDirectorChange = (e) => {
+    setDirector(e.target.value.split(","));
+  };
+
+  const handleScenarioChange = (e) => {
+    setScenario(e.target.value.split(","));
   };
 
   const handleGenresChange = (e) => {
@@ -38,10 +50,10 @@ const AddMovie = () => {
     const newMovie = {
       title: Title,
       min_age: parseInt(Age),
-      time: parseInt(Time),
       description: Description,
       youtube_id: YoutubeId,
       director: Director,
+      creative: Creative,
       scenario: Scenario,
       small_img_url: SmallImgUrl,
       large_img_url: LargeImgUrl,
@@ -52,15 +64,15 @@ const AddMovie = () => {
     };
 
     try {
-      await projectFirestore.collection("movies").add(newMovie);
+      await projectFirestore.collection("serials").add(newMovie);
       setTitle("");
       setAge(null);
-      setTime(null);
+      setCreative([]);
       setDescription("");
       setYoutubeId("");
       setActors([]);
-      setDirector("");
-      setScenario("");
+      setDirector([]);
+      setScenario([]);
       setSmallImgUrl("");
       setLargeImgUrl("");
       setCountry([]);
@@ -72,17 +84,17 @@ const AddMovie = () => {
   };
 
   if (role !== "admin") {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
   return (
     <section className="form-section">
-      <h1>Přidání filmů</h1>
+      <h1>Přidání seriálu</h1>
       <form onSubmit={submitForm}>
         <input
           className="input"
           type="text"
-          placeholder="Název filmu"
+          placeholder="Název seriálu"
           onChange={(e) => setTitle(e.target.value)}
           value={Title}
         />
@@ -94,15 +106,6 @@ const AddMovie = () => {
           min="1"
           onChange={(e) => setAge(e.target.value)}
           value={Age}
-        />
-
-        <input
-          className="input"
-          type="number"
-          placeholder="Čas filmu"
-          min="1"
-          onChange={(e) => setTime(e.target.value)}
-          value={Time}
         />
 
         <input
@@ -150,46 +153,54 @@ const AddMovie = () => {
           className="input"
           type="text"
           onChange={handleActorsChange}
-          value={Actors.join(',')}
-          placeholder="Herci oddělené čárkou !"
+          value={Actors.join(",")}
+          placeholder="Herci - odděleno čárkou !"
         />
 
         <input
           className="input"
           type="text"
-          placeholder="Země oddělené čárkou !"
+          placeholder="Země - odděleno čárkou !"
           onChange={handleCountryChange}
-          value={Country.join(',')}
+          value={Country.join(",")}
         />
 
         <input
           className="input"
           type="text"
-          placeholder="Žánre oddělené čárkou !"
+          placeholder="Žánre - odděleno čárkou !"
           onChange={handleGenresChange}
-          value={Genres.join(',')}
+          value={Genres.join(",")}
         />
 
         <input
           className="input"
           type="text"
-          placeholder="Režisér"
-          onChange={(e) => setDirector(e.target.value)}
-          value={Director}
+          placeholder="Tvůrci - odděleno čárkou"
+          onChange={handleCreativeChange}
+          value={Creative.join(",")}
+        />
+
+        <input
+          className="input"
+          type="text"
+          placeholder="Režiséry- odděleno čárkou"
+          onChange={handleDirectorChange}
+          value={Director.join(",")}
         />
 
         <input
           className="input"
           type="text"
           placeholder="Scénář"
-          onChange={(e) => setScenario(e.target.value)}
-          value={Scenario}
+          onChange={handleScenarioChange}
+          value={Scenario.join(",")}
         />
 
-        <input type="submit" value="Přidat film" />
+        <input type="submit" value="Přidat seriál" />
       </form>
     </section>
   );
 };
 
-export default AddMovie;
+export default AddSerial;

@@ -77,8 +77,8 @@ const OneMovie = () => {
               ))}
           </div>
           <div className="ratings">
-            <Ratings movieId={movieId} />
-            <RatingModal movieId={movieId} user={user} title={data.title} />
+            <Ratings id={movieId} collectionName={"movies"} />
+            <RatingModal id={movieId} collectionName={"movies"} user={user} title={data.title} />
           </div>
         </div>
       </div>
@@ -102,8 +102,8 @@ const OneMovie = () => {
                 data.actors.map((actor, id) => (
                   <span key={id} className="person">
                     {actor}
-                    {id < data.actors.length - 1 ? " • " : ""}
-                  </span>
+                    {id < data.actors.length - 1 ? " • " : "..."}                    
+                  </span>                  
                 ))}
             </span>
           </p>

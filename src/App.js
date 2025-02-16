@@ -8,6 +8,7 @@ import AllSerials from "./pages//serials/AllSerials";
 import OneSerial from "./pages/serials/OneSerial";
 import SharedLayout from "./pages/layout/SharedLayout";
 import AddMovie from "./pages/form/AddMovie";
+import AddSerial from "./pages/form/AddSerial";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -24,6 +25,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/all-movies" element={<AllMovies />} />
             <Route path="/add-movie" element={<AddMovie />} />
+            <Route path="/add-serial" element={<AddSerial /> } />
             <Route path="/all-serials" element={<AllSerials />} />
             <Route path="/one-movie/:movieId" element={<OneMovie />} />
             <Route path="/one-serial/:serialId" element={<OneSerial />} />

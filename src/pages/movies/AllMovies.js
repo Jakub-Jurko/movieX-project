@@ -5,15 +5,13 @@ import { NavLink } from "react-router-dom";
 import Carousel from "../../components/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import Ratings from "../../components/Ratings";
 import PercentageDisplay from "../../components/PercentageDisplay";
-import { GridLoader } from 'react-spinners'
+import { GridLoader } from 'react-spinners';
 
-
-const Allmovies = () => {
+const AllMovies = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = projectFirestore.collection("movies").onSnapshot(
@@ -28,11 +26,11 @@ const Allmovies = () => {
           });
           setData(results);
         }
-        setLoading(false)
+        setLoading(false);
       },
       (err) => {
         setError(err.message);
-        setLoading(false)
+        setLoading(false);
       }
     );
     return () => {
@@ -40,28 +38,28 @@ const Allmovies = () => {
     };
   }, []);
 
-  if(loading) {
+  if (loading) {
     return (
       <div className="grid-loader">
-            <GridLoader color='#727D73' size={30}/>
-        </div>
-    )
+        <GridLoader color="#727D73" size={30} />
+      </div>
+    );
   }
 
   return (
     <div>
-      <Carousel />
+      <Carousel collectionName="movies" /> {/* Předáváme parametry pro správnou kolekci */}
       {error && <p>{error}</p>}
-      <div className={styles['all-movies']}>
+      <div className={styles["all-movies"]}>
         {data.map((oneMovie) => {
           const { id, title, small_img_url } = oneMovie;
 
           return (
-            <div className={styles['one-movie']} key={id}>
+            <div className={styles["one-movie"]} key={id}>
               <NavLink to={`/one-movie/${id}`}>
-                <img className={styles['movie-img']} src={small_img_url} alt="" />
+                <img className={styles["movie-img"]} src={small_img_url} alt={title} />
                 <p className={styles.percenta}>
-                  <PercentageDisplay movieId={id} />
+                  <PercentageDisplay collectionName="movies" contentId={id} />
                 </p>
                 <h4>{title}</h4>
               </NavLink>
@@ -73,4 +71,4 @@ const Allmovies = () => {
   );
 };
 
-export default Allmovies;
+export default AllMovies;

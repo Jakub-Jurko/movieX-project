@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { projectFirestore } from "../firebase/config";
 import "./PercentageDisplay.css";
 
-const PercentageDisplay = ({ movieId }) => {
+const PercentageDisplay = ({ contentId, collectionName }) => {
   const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     const unsubscribe = projectFirestore
-      .collection("movies")
-      .doc(movieId)
+      .collection(collectionName)
+      .doc(contentId)
       .collection("ratings")
       .onSnapshot((snapshot) => {
         let total = 0;
@@ -38,7 +38,7 @@ const PercentageDisplay = ({ movieId }) => {
       });
 
     return () => unsubscribe();
-  }, [movieId]);
+  }, [contentId, collectionName]);
 
   // Výpočet procenta z průměrného hodnocení (0-10 na 0-100)
   const fillPercentage = (averageRating / 10) * 100;

@@ -84,7 +84,7 @@ nav {
     color: #868686;
     padding: 10px 10px 10px 20px;
     border-left: 1px solid #e5e5e5;
-    font-size: clamp(10px, 1.5vw, 16px);
+    font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .logout-btn {
@@ -140,6 +140,11 @@ nav {
     .nav-header {
         width: 100%;
     }
+    
+    .user-email {
+        padding: 0px 0px 0px 10px;
+        border: none;
+    }
 
     .nav-header button {
         display: block;
@@ -173,11 +178,5 @@ nav {
     .show {
         overflow: hidden;
         transition: max-height 0.6s ease-in-out;
-    }
-
-    .user-email {
-        color: #868686;
-        padding: 0px 10px;
-        border: none;
     }
 }

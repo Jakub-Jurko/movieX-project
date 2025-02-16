@@ -34,6 +34,11 @@ const Navbar = () => {
                 Přidání filmů
               </NavLink>
             </li>}
+            {role === "admin" && <li>
+              <NavLink to="add-serial" onClick={() => setShowMenu(false)}>
+                Přidání seriálu
+              </NavLink>
+            </li>}
             <li>
               <NavLink to="/" onClick={() => setShowMenu(false)}>
                 Domů

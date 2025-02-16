@@ -4,13 +4,13 @@ import { HiOutlineStar } from "react-icons/hi";
 import { projectFirestore } from "../firebase/config";
 import "./Ratings.css";
 
-const Ratings = ({ movieId }) => {
+const Ratings = ({ id, collectionName }) => {
   const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     const unsubscribe = projectFirestore
-      .collection("movies")
-      .doc(movieId)
+      .collection(collectionName)
+      .doc(id)
       .collection("ratings")
       .onSnapshot((snapshot) => {
         let total = 0;
@@ -40,7 +40,7 @@ const Ratings = ({ movieId }) => {
       });
 
     return () => unsubscribe();
-  }, [movieId]);
+  }, [collectionName, id]);
 
   // Výpočet procenta z průměrného hodnocení (0-10 na 0-100)
   const fillPercentage = (averageRating / 10) * 100;
