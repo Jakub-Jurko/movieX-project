@@ -9,7 +9,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: clamp(14px, 1.5vw, 18px);
+    font-size: clamp(14px, 1.5vw, 15px);
 }
 
 .nav-header {
@@ -69,7 +69,7 @@ nav {
 .nav-list a.login {
     background-color: #868686;
     padding: 5px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .nav-list a.active {
@@ -84,18 +84,18 @@ nav {
     color: #868686;
     padding: 10px 10px 10px 20px;
     border-left: 1px solid #e5e5e5;
-    font-size: clamp(14px, 1.5vw, 16px);
+    font-size: clamp(14px, 1.5vw, 14px);
 }
 
 .logout-btn {
-    margin: 0px 10px;
+    margin: 0px 5px;
     background-color: #616161;
     border: none;
     padding: 5px 8px;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #e5e5e5;
     font-weight: bold;
-    font-size: clamp(10px, 1.5vw, 14px);
+    font-size: clamp(14px, 1.5vw, 14px);
 }
 
 .logout-btn:hover {
@@ -109,7 +109,7 @@ nav {
         flex-direction: column;
         width: 100%;
         align-items: center;
-        max-height: 100vh;
+        max-height: 120vh;
         overflow: hidden;
     }
 

@@ -11,17 +11,25 @@ const AddMovie = () => {
   const [Description, setDescription] = useState("");
   const [YoutubeId, setYoutubeId] = useState("");
   const [Actors, setActors] = useState([]);
-  const [Director, setDirector] = useState("");
-  const [Scenario, setScenario] = useState("");
+  const [Director, setDirector] = useState([]);
+  const [Scenario, setScenario] = useState([]);
   const [SmallImgUrl, setSmallImgUrl] = useState("");
   const [LargeImgUrl, setLargeImgUrl] = useState("");
   const [Country, setCountry] = useState([]);
   const [Genres, setGenres] = useState([]);
   const [Year, setYear] = useState(null);
-  const { role } = useContext(AuthContext)
+  const { role } = useContext(AuthContext);
 
   const handleActorsChange = (e) => {
     setActors(e.target.value.split(","));
+  };
+
+  const handleDirectorChange = (e) => {
+    setDirector(e.target.value.split(","));
+  };
+
+  const handleScenarioChange = (e) => {
+    setScenario(e.target.value.split(","));
   };
 
   const handleGenresChange = (e) => {
@@ -59,8 +67,8 @@ const AddMovie = () => {
       setDescription("");
       setYoutubeId("");
       setActors([]);
-      setDirector("");
-      setScenario("");
+      setDirector([]);
+      setScenario([]);
       setSmallImgUrl("");
       setLargeImgUrl("");
       setCountry([]);
@@ -72,7 +80,7 @@ const AddMovie = () => {
   };
 
   if (role !== "admin") {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
   return (
@@ -150,7 +158,7 @@ const AddMovie = () => {
           className="input"
           type="text"
           onChange={handleActorsChange}
-          value={Actors.join(',')}
+          value={Actors.join(",")}
           placeholder="Herci oddělené čárkou !"
         />
 
@@ -159,7 +167,7 @@ const AddMovie = () => {
           type="text"
           placeholder="Země oddělené čárkou !"
           onChange={handleCountryChange}
-          value={Country.join(',')}
+          value={Country.join(",")}
         />
 
         <input
@@ -167,23 +175,23 @@ const AddMovie = () => {
           type="text"
           placeholder="Žánre oddělené čárkou !"
           onChange={handleGenresChange}
-          value={Genres.join(',')}
+          value={Genres.join(",")}
         />
 
         <input
           className="input"
           type="text"
-          placeholder="Režisér"
-          onChange={(e) => setDirector(e.target.value)}
-          value={Director}
+          placeholder="Režiséry- odděleno čárkou"
+          onChange={handleDirectorChange}
+          value={Director.join(",")}
         />
 
         <input
           className="input"
           type="text"
-          placeholder="Scénář"
-          onChange={(e) => setScenario(e.target.value)}
-          value={Scenario}
+          placeholder="Scénáristé - odděleno čárkou"
+          onChange={handleScenarioChange}
+          value={Scenario.join(",")}
         />
 
         <input type="submit" value="Přidat film" />

@@ -192,7 +192,7 @@ const AddSerial = () => {
         <input
           className="input"
           type="text"
-          placeholder="Scénář"
+          placeholder="Scénáristé - odděleno čárkou"
           onChange={handleScenarioChange}
           value={Scenario.join(",")}
         />

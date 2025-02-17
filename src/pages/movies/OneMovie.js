@@ -14,7 +14,7 @@ const OneMovie = () => {
   const user = projectAuth.currentUser;
   const { movieId } = useParams();
   const maxLength = 200;
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     projectFirestore
@@ -24,10 +24,10 @@ const OneMovie = () => {
       .then((document) => {
         if (document.exists) {
           setData(document.data());
-          setLoading(false)
+          setLoading(false);
         } else {
           setError("Nenašli jsme tento film");
-          setLoading(false)
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -45,43 +45,49 @@ const OneMovie = () => {
       {error && <p>{error}</p>}
       {loading ? (
         <div className="grid-loader">
-        <GridLoader color='#727D73' size={30}/>
-    </div>
+          <GridLoader color="#727D73" size={30} />
+        </div>
       ) : (
-      <div className="page">
-        <div
-          className="background"
-          style={{
-            backgroundImage: `url(${data.large_img_url})`,
-          }}
-        ></div>
-        
+        <div className="page">
+          <div
+            className="background"
+            style={{
+              backgroundImage: `url(${data.large_img_url})`,
+            }}
+          ></div>
 
-        <div className="content">
-          <div className="title">
-          <h1>{data.title}</h1>
-          <p className="info">
-            {data.year} • {data.min_age}+ • {data.time} min
-          </p>
-          </div>
-          <img src={data.large_img_url} alt="mobile-img" className="mobile-img" />
-          
-          
-          
-          <div className="genres">
-            {data.genres &&
-              data.genres.map((genre, id) => (
-                <p key={id} className="genre">
-                  {genre}
-                </p>
-              ))}
-          </div>
-          <div className="ratings">
-            <Ratings id={movieId} collectionName={"movies"} />
-            <RatingModal id={movieId} collectionName={"movies"} user={user} title={data.title} />
+          <div className="content">
+            <div className="title">
+              <h1>{data.title}</h1>
+              <p className="info">
+                {data.year} • {data.min_age}+ • {data.time} min
+              </p>
+            </div>
+            <img
+              src={data.large_img_url}
+              alt="mobile-img"
+              className="mobile-img"
+            />
+
+            <div className="genres">
+              {data.genres &&
+                data.genres.map((genre, id) => (
+                  <p key={id} className="genre">
+                    {genre}
+                  </p>
+                ))}
+            </div>
+            <div className="ratings">
+              <Ratings id={movieId} collectionName={"movies"} />
+              <RatingModal
+                id={movieId}
+                collectionName={"movies"}
+                user={user}
+                title={data.title}
+              />
+            </div>
           </div>
         </div>
-      </div>
       )}
 
       <div className="people-box">
@@ -89,11 +95,31 @@ const OneMovie = () => {
         <div className="all-people">
           <p className="director">
             <span className="role">Réžie </span>
-            <span className="person">{data.director}</span>
+            <span className="actor-list">
+              {data.director &&
+                data.director.map((director, id) => (
+                  <span key={id} className="person">
+                    {director}
+                    {data.director.length > 1 && id < data.director.length - 1
+                      ? " • "
+                      : ""}
+                  </span>
+                ))}
+            </span>
           </p>
           <p className="people">
             <span className="role">Scénař </span>
-            <span className="person">{data.scenario}</span>
+            <span className="actor-list">
+              {data.scenario &&
+                data.scenario.map((scenario, id) => (
+                  <span key={id} className="person">
+                    {scenario}
+                    {data.scenario.length > 1 && id < data.scenario.length - 1
+                      ? " • "
+                      : ""}
+                  </span>
+                ))}
+            </span>
           </p>
           <p className="people">
             <span className="role">Hrají </span>
@@ -102,8 +128,8 @@ const OneMovie = () => {
                 data.actors.map((actor, id) => (
                   <span key={id} className="person">
                     {actor}
-                    {id < data.actors.length - 1 ? " • " : "..."}                    
-                  </span>                  
+                    {id < data.actors.length - 1 ? " • " : "..."}
+                  </span>
                 ))}
             </span>
           </p>
