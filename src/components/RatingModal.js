@@ -118,11 +118,6 @@ const RatingModal = ({ id, user, title, collectionName }) => {
     };
   }, [isOpen, rating]);
 
-  const bounceAnimation = {
-    initial: { scale: 1 },
-    animate: { scale: [1, 1.4, 1], transition: { duration: 0.3 } },
-  };
-
   return (
     <div>
       {/* ToastContainer musí být v JSX */}
