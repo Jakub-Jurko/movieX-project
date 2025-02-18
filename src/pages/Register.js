@@ -58,7 +58,7 @@ const Register = () => {
       {/* Spinner se zobrazuje, když je loading true */}
       {loading ? (
         <div className="grid-loader">
-        <GridLoader color='#727D73' size={30}/>
+        <GridLoader color='#222222' size={30}/>
     </div>
       ) : (
         <>

@@ -4,3 +4,14 @@
     align-items: center;
     height: 80vh;
 }
+
+.welcome-img {
+    width: 100%;
+    height: 80vh;
+}
+
+@media (max-width: 768px) {
+    .welcome-img {
+        height: 25vh;
+    }
+}

@@ -7,14 +7,18 @@
   flex-wrap: wrap;
 }
 
+.motion-carousel {
+  height: 70vh;
+}
+
 .all-movies a {
   text-decoration: none;
 }
 
 .one-movie {
-  background-color: #0f0f0f;
+  background-color: #222222;
   width: clamp(100px, 16.5vw, 140px);
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 5px rgb(0, 0, 0);
   color: #e5e5e5;
   height: auto;
   margin: 10px 5px;
@@ -38,11 +42,10 @@
   width: clamp(25px, 5vw, 35px);
   height: clamp(25px, 5vw, 35px);
   border-radius: 50px;
-  box-shadow: 0px 0px 5px #505050;
+  box-shadow: 0px 0px 10px #adadad;
   color: hsl(73, 100%, 72%);
   font-weight: bold;
   font-size: clamp(12px, 2.8vw, 16px);
-
 }
 
 .one-movie:hover {
@@ -78,4 +81,16 @@
   justify-content: center;
   align-items: center;
   height: 80vh;
+}
+
+@media (max-width: 768px) {
+  .motion-carousel {
+    min-height: 50vh;
+  }
+}
+
+@media (max-width: 500px) {
+  .motion-carousel {
+    min-height: 30vh;
+  }
 }

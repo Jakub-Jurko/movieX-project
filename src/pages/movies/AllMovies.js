@@ -41,7 +41,7 @@ const AllMovies = () => {
   if (loading) {
     return (
       <div className="grid-loader">
-        <GridLoader color="#727D73" size={30} />
+        <GridLoader color="#222222" size={30} />
       </div>
     );
   }
@@ -54,7 +54,7 @@ const AllMovies = () => {
         {data.map((oneMovie) => {
           const { id, title, small_img_url } = oneMovie;
 
-          return (
+          return (            
             <div className={styles["one-movie"]} key={id}>
               <NavLink to={`/one-movie/${id}`}>
                 <img className={styles["movie-img"]} src={small_img_url} alt={title} />

@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./RatingModal.css";
+import { motion } from "framer-motion"
 
 const RatingModal = ({ id, user, title, collectionName }) => {
   const [rating, setRating] = useState(null);
@@ -117,6 +118,11 @@ const RatingModal = ({ id, user, title, collectionName }) => {
     };
   }, [isOpen, rating]);
 
+  const bounceAnimation = {
+    initial: { scale: 1 },
+    animate: { scale: [1, 1.4, 1], transition: { duration: 0.3 } },
+  };
+
   return (
     <div>
       {/* ToastContainer musí být v JSX */}
@@ -138,6 +144,16 @@ const RatingModal = ({ id, user, title, collectionName }) => {
               {[...Array(10)].map((_, index) => {
                 const starValue = index + 1;
                 return (
+                  <motion.div
+  key={index}
+  initial="initial"
+  animate={
+    // Animuj pouze ty hvězdy, které jsou vybrané
+    starValue <= selectedRating
+      ? { scale: [1, 1.4, 1], transition: { duration: 0.3, delay: index * 0.05 } }
+      : "initial"
+  }
+>
                   <FaStar
                     key={index}
                     color={
@@ -148,7 +164,7 @@ const RatingModal = ({ id, user, title, collectionName }) => {
                     onClick={() => setSelectedRating(starValue)}
                     onMouseEnter={() => setHoverRating(starValue)}
                     onMouseLeave={() => setHoverRating(0)}
-                  />
+                  /></motion.div>
                 );
               })}
             </div>
