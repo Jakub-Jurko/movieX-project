@@ -6,7 +6,7 @@ import Carousel from "../../components/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PercentageDisplay from "../../components/PercentageDisplay";
-import { GridLoader } from "react-spinners";
+import { FadeLoader } from "react-spinners";
 
 const AllSerials = () => {
   const [data, setData] = useState([]);
@@ -39,12 +39,12 @@ const AllSerials = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="grid-loader">
-        <GridLoader color="#222222" size={30} />
-      </div>
-    );
-  }
+      return (
+        <div className={styles.fadeLoader}>
+          <FadeLoader color="#5e5e5e"/>
+        </div>
+      );
+    }
 
   return (
     <div>

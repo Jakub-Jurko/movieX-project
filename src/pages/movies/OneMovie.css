@@ -45,7 +45,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  max-width: 90vw;
+  max-width: 50vw;
   height: 80vh;
   z-index: 100;
   padding-left: 40px;
@@ -106,12 +106,14 @@
 }
 
 h1 {
-  font-size: clamp(14px, 6vw, 50px);
+  font-size: clamp(14px, 6vw, 40px);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   margin-bottom: 10px;
 }
 
 p.info {
   font-size: clamp(10px, 4vw, 20px);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   margin-bottom: 5px;
   margin-left: 2px;
   white-space: nowrap;
@@ -168,7 +170,7 @@ p.info {
   pointer-events: auto;
 }
 
-.grid-loader {
+.fade-loader {
   display: flex;
   justify-content: center;
   align-items: center;

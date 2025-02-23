@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import backgroundImage from "../images/background-moviex.jpg";
 import { BsGoogle } from "react-icons/bs";
-import { GridLoader } from "react-spinners"; // Importujeme GridLoader
+import { FadeLoader } from "react-spinners"; // Importujeme GridLoader
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -53,14 +53,17 @@ const Register = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="fade-loader">
+        <FadeLoader color="#5e5e5e"/>
+      </div>
+    );
+  }
+
   return (
     <div className="register-page">
-      {/* Spinner se zobrazuje, když je loading true */}
-      {loading ? (
-        <div className="grid-loader">
-        <GridLoader color='#222222' size={30}/>
-    </div>
-      ) : (
+      
         <>
           <div
             className="background-register"
@@ -92,8 +95,7 @@ const Register = () => {
               Registrovat se přes Google
             </button>
           </div>
-        </>
-      )}
+        </>      
     </div>
   );
 };

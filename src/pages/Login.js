@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { projectAuth, googleProvider } from "../firebase/config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 import { BsGoogle } from "react-icons/bs";
 import backgroundImage from "../images/background-moviex.jpg";
-import { GridLoader } from "react-spinners"; // Importujeme GridLoader
+import { FadeLoader } from "react-spinners"; // Importujeme GridLoader
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +12,7 @@ const Login = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true); // Stav pro kontrolu načítání
   const navigate = useNavigate();
+  const location = useLocation()
 
   useEffect(() => {
     // Simulace načítání pozadí nebo jiných dat
@@ -30,7 +31,7 @@ const Login = () => {
     setLoading(true); // Začátek načítání
     try {
       await projectAuth.signInWithEmailAndPassword(email, password);
-      navigate("/");
+      navigate(location.state?.from || "/", { replace: true });
       setLoading(false)
     } catch (err) {
       setError(err.message);
@@ -43,10 +44,8 @@ const Login = () => {
     setLoading(true); // Začátek načítání
     try {
       googleProvider.setCustomParameters({ prompt: "select_account" });
-      const result = await projectAuth.signInWithPopup(googleProvider);
-      console.log("Přihlášený uživatel:", result.user);
-      navigate("/");
-      setLoading(false)
+      await projectAuth.signInWithPopup(googleProvider);
+      navigate(location.state?.from || "/", { replace: true });      
     } catch (error) {
       console.error("Chyba při přihlášení přes Google:", error.message);
     } finally {
@@ -54,14 +53,16 @@ const Login = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="fade-loader">
+        <FadeLoader color="#5e5e5e"/>
+      </div>
+    );
+  }
+
   return (
-    <div className="login-page">
-      {/* Spinner se zobrazuje, když je loading true */}
-      {loading ? (
-        <div className="grid-loader">
-        <GridLoader color='#222222' size={30}/>
-    </div>
-      ) : (
+    <div className="login-page">      
         <>
           <div
             className="background-login"
@@ -95,7 +96,6 @@ const Login = () => {
             </form>
           </div>
         </>
-      )}
     </div>
   );
 };

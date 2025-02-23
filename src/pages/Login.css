@@ -93,7 +93,7 @@
   padding-right: 30px;
 }
 
-.grid-loader {
+.fade-loader {
   display: flex;
   justify-content: center;
   align-items: center;

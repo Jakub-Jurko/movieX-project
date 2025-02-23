@@ -1,12 +1,104 @@
+/* Kontejner pro celou stránku */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
+.home-head {
+    position: relative;
+    width: 100vw; /* Celá šířka okna */
+    /* height: 100vh; Celá výška okna */
+    display: flex;
+    align-items: flex-start; /* Zarovnání obsahu na spodek */
+    justify-content: flex-start;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px black;
+  }
+  
+  /* Pozadí */
+  .home-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Zajistí, že obrázek vyplní celou šířku */
+    /* height: 450px; */
+    height: clamp(200px, 33vw, 450px);
+    background-size: cover; /* Obrázek se roztáhne a pokryje celé pozadí */
+    background-position: top; /* Ujistíme se, že obrázek bude začínat od vrchu */
+    z-index: -1; /* Pozadí bude pod obsahem */
+    box-shadow: inset 0 40px 100px rgb(0, 0, 0), 0px 0px 10px black;
+  }
+  
+  /* Obsah na pozadí */
+  .home-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around; /* Obsah se zarovná na spodek */
+    text-align: flex-end;
+    color: #e5e5e5; /* Text bude bílý */
+    z-index: 1; /* Obsah bude nad pozadím */
+    padding: 0px 20px;
+    max-width: 60%; /* Maximální šířka obsahu */
+    height: clamp(200px, 33vw, 450px);
+  }
 
-.welcome-img {
-    width: 100%;
+  .button {
+    background-color: rgba(168, 168, 168, 0.329);
+    border: none;
+    cursor: pointer;
+    font-size: clamp(12px, 3vw, 20px);
+    color: #e5e5e5;
+    padding: 5px 10px;
+    border-radius: 25px;
+  }
+  
+  /* Titulek filmu */
+  .home-title {
+    font-size: clamp(24px, 8vw, 80px); /* Dynamická velikost podle šířky okna */
+    margin: 5px;
+    margin-left: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Stín pro lepší čitelnost */
+  }
+
+  .home-info h3 {
+    font-size: clamp(12px, 3vw, 30px);
+    margin: 10px 0;
+  }
+  
+  /* Popis filmu */
+  .home-info p {
+    font-size: clamp(12px, 2.4vw, 20px); /* Dynamická velikost písma */
+    margin: 10px 0;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Stín pro lepší čitelnost */
+  }
+
+  .top-title {
+    color: #afafaf;
+    margin-left: clamp(20px, 5vw, 70px);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); 
+  }
+
+  .fade-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 80vh;
-}
-
-@media (max-width: 768px) {
-    .welcome-img {
-        height: 25vh;
+  }
+  
+  @media (max-width: 768px) {
+    .home-info p {
+        display: none;
     }
-}
+
+    .home-content {
+        justify-content: flex-end;
+    }
+
+    .home-info h3 {
+        margin-bottom: 20px;
+    }
+  }
+  

@@ -5,7 +5,7 @@ import { projectAuth, projectFirestore } from "../../firebase/config";
 import Ratings from "../../components/Ratings";
 import Trailer from "../trailers/Trailer";
 import RatingModal from "../../components/RatingModal";
-import { GridLoader } from "react-spinners";
+import { FadeLoader } from "react-spinners";
 
 const OneSerial = () => {
   const [data, setData] = useState({});
@@ -32,6 +32,7 @@ const OneSerial = () => {
       })
       .catch((err) => {
         setError(err.message);
+        setLoading(false)
       });
   }, [serialId]);
 
@@ -40,14 +41,17 @@ const OneSerial = () => {
       ? data.description.slice(0, maxLength) + "..."
       : data.description;
 
+      if (loading) {
+        return (
+          <div className="fade-loader">
+            <FadeLoader color="#5e5e5e"/>
+          </div>
+        );
+      }
+
   return (
     <section className="one-serial-section">
       {error && <p>{error}</p>}
-      {loading ? (
-        <div className="grid-loader">
-        <GridLoader color='#222222' size={30}/>
-    </div>
-      ) : (
       <div className="page">
         <div
           className="background"
@@ -89,8 +93,7 @@ const OneSerial = () => {
             <RatingModal id={serialId} collectionName={"serials"} user={user} title={data.title} />
           </div>
         </div>
-      </div>
-      )}
+      </div>      
 
       <div className="people-box">
         <img src={data.small_img_url} alt="" className="small-img" />

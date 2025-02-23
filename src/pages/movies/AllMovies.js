@@ -6,7 +6,7 @@ import Carousel from "../../components/Carousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PercentageDisplay from "../../components/PercentageDisplay";
-import { GridLoader } from 'react-spinners';
+import { FadeLoader } from 'react-spinners';
 
 const AllMovies = () => {
   const [data, setData] = useState([]);
@@ -40,8 +40,8 @@ const AllMovies = () => {
 
   if (loading) {
     return (
-      <div className="grid-loader">
-        <GridLoader color="#222222" size={30} />
+      <div className={styles.fadeLoader}>
+        <FadeLoader color="#5e5e5e"/>
       </div>
     );
   }
@@ -58,9 +58,9 @@ const AllMovies = () => {
             <div className={styles["one-movie"]} key={id}>
               <NavLink to={`/one-movie/${id}`}>
                 <img className={styles["movie-img"]} src={small_img_url} alt={title} />
-                <p className={styles.percenta}>
+                <div className={styles.percenta}>
                   <PercentageDisplay collectionName="movies" contentId={id} />
-                </p>
+                </div>
                 <h4>{title}</h4>
               </NavLink>
             </div>

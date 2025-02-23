@@ -121,7 +121,7 @@
     padding: 0 10px; /* Okraje kolem textu */
   }
 
-  .grid-loader {
+  .fade-loader {
     display: flex;
     justify-content: center;
     align-items: center;

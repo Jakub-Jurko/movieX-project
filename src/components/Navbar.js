@@ -1,28 +1,50 @@
 import "./Navbar.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import logo from "../images/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { projectAuth } from "../firebase/config";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { user, role } = useContext(AuthContext); // Získání přihlášeného uživatele
+  const { user, role } = useContext(AuthContext);
+  const menuRef = useRef(null);
 
   const handleLogout = async () => {
     await projectAuth.signOut();
     setShowMenu(false)
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false); // Zavřít menu
+      }
+    };
+
+    if (showMenu) {
+      document.addEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [showMenu]);
+
+  const location = useLocation()
+
   return (
-    <nav>
+    <nav ref={menuRef}>
       <div className="navigation">
         <div className="nav-header">
           <NavLink to="/">
             <img src={logo} alt="Logo" />
           </NavLink>
-          <button onClick={() => setShowMenu(!showMenu)}>
+          <button onClick={(e) => { 
+            e.stopPropagation(); // Zastaví šíření eventu, aby se menu nezavřelo hned po otevření
+            setShowMenu(!showMenu);
+          }}>
             <GiHamburgerMenu className="hamburger-icon" />
           </button>
         </div>
@@ -76,6 +98,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/login"
+                    state={{ from: location.pathname }}
                     onClick={() => setShowMenu(false)}
                     className="login"
                   >
