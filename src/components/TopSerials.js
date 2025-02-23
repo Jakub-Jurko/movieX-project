@@ -126,7 +126,7 @@ const TopMovies = () => {
 
           return (
             <div className={styles.oneMovie} key={id}>
-              <NavLink to={`/one-movie/${id}`}>
+              <NavLink to={`/one-serial/${id}`}>
                 <img className={styles.movieImg} src={small_img_url} alt={title} />
                 <div className={styles.percenta}>
                   <PercentageDisplay collectionName="serials" contentId={id} />

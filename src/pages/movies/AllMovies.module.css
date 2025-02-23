@@ -85,6 +85,27 @@
   height: 80vh;
 }
 
+.searchIcon {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  color: #929292;
+}
+
+.searching {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.searchContainer input {
+  outline: none;
+  width: clamp(150px, 50vw, 300px);
+  padding: 5px 10px;
+  font-size: clamp(12px, 3vw, 16px);
+  border-radius: 8px;
+}
+
 @media (max-width: 768px) {
   .motion-carousel {
     min-height: 50vh;
