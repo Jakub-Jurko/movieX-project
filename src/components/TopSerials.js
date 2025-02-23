@@ -85,9 +85,10 @@ const TopMovies = () => {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 1000,
+    speed: 100,
     slidesToShow: 6,
     slidesToScroll: 2,
+    touchMove: true,
     swipeToSlide: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
