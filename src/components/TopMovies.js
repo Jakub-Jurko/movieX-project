@@ -85,11 +85,11 @@ const TopMovies = () => {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 500,
+    speed: 1000, // Zvýšeno pro rychlejší pohyb
     slidesToShow: 6,
-    slidesToScroll: 2,
-    touchMove: true,
+    slidesToScroll: 1, // Zajistí, že každý tah posune o 1 slid
     swipeToSlide: true,
+    draggable: true, // Umožní přetahování prstem
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
@@ -107,10 +107,15 @@ const TopMovies = () => {
       },
       {
         breakpoint: 480,
-        settings: { slidesToShow: 2.5, slidesToScroll: 2, arrows: false },
+        settings: { 
+          slidesToShow: 2.5, 
+          slidesToScroll: 1, 
+          arrows: false,
+          speed: 800, // Možná upravit pro mobilní zařízení
+        },
       },
     ],
-  };  
+  };
 
   return (
     <div className={styles.sliderContainer}>
