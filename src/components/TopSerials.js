@@ -85,7 +85,7 @@ const TopMovies = () => {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 100,
+    speed:500,
     slidesToShow: 6,
     slidesToScroll: 2,
     touchMove: true,
@@ -107,7 +107,7 @@ const TopMovies = () => {
       },
       {
         breakpoint: 480,
-        settings: { slidesToShow: 2.5, slidesToScroll: 1, arrows: false },
+        settings: { slidesToShow: 2.5, slidesToScroll: 2, arrows: false },
       },
     ],
   };  

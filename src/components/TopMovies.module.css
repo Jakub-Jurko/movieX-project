@@ -145,7 +145,7 @@
 
     @media (max-width: 480px) {
 .sliderContainer {
-  margin: 15px 0px 15px 0px !important;
+  margin: 15px 0px 15px 10px !important;
   padding: 0;
   width: 100% !important;
 }
