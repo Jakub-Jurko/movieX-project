@@ -109,8 +109,7 @@ const TopMovies = () => {
       {
         breakpoint: 480,
         settings: { 
-          slidesToShow: 2.5, 
-          slidesToScroll: 10,
+          slidesToShow: 2.5,
           arrows: false,
           speed: 100, // Možná upravit pro mobilní zařízení
         }
