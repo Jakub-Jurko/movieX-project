@@ -85,11 +85,11 @@ const TopMovies = () => {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 1000, // Zvýšeno pro rychlejší pohyb
+    speed: 1000, 
     slidesToShow: 6,
-    slidesToScroll: 1, // Zajistí, že každý tah posune o 1 slid
+    slidesToScroll: 1, 
     swipeToSlide: true,
-    draggable: true, // Umožní přetahování prstem
+    draggable: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
@@ -109,9 +109,9 @@ const TopMovies = () => {
         breakpoint: 480,
         settings: { 
           slidesToShow: 2.5, 
-          slidesToScroll: 1, 
+          slidesToScroll: 1,
           arrows: false,
-          speed: 800, // Možná upravit pro mobilní zařízení
+          speed: 800, 
         },
       },
     ],

@@ -34,7 +34,7 @@ const Login = () => {
       navigate(location.state?.from || "/", { replace: true });
       setLoading(false)
     } catch (err) {
-      setError(err.message);
+      setError("Neplatné heslo nebo e-mail!");
     } finally {
       setLoading(false); // Konec načítání
     }

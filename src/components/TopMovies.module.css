@@ -1,7 +1,7 @@
 .sliderContainer {
   width: 90% !important; /* Maximální šířka */
   padding: 0;
-  margin: 20px 0px 20px 50px !important;
+  margin: 20px 0px 40px 50px !important;
 }
 
 .slick-track {
@@ -153,6 +153,10 @@
   margin: 15px 0px 15px 10px !important;
   padding: 0;
   width: 100% !important;
+}
+
+slick-dots {
+  margin-bottom: 20px !important;
 }
 
 }

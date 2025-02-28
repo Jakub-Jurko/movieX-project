@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "./TopMovies.module.css";
+import styles from "./TopSerials.module.css";
 import PercentageDisplay from "./PercentageDisplay";
 import { NavLink } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
@@ -85,11 +85,12 @@ const TopMovies = () => {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 1000, // Zvýšeno pro rychlejší pohyb
+    speed: 1000, 
     slidesToShow: 6,
-    slidesToScroll: 1, // Zajistí, že každý tah posune o 1 slid
+    dotsClass: styles.slickDots,
+    slidesToScroll: 1, 
     swipeToSlide: true,
-    draggable: true, // Umožní přetahování prstem
+    draggable: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
@@ -109,12 +110,12 @@ const TopMovies = () => {
         breakpoint: 480,
         settings: { 
           slidesToShow: 2.5, 
-          slidesToScroll: 1, 
+          slidesToScroll: 10,
           arrows: false,
-          speed: 800, // Možná upravit pro mobilní zařízení
-        },
-      },
-    ],
+          speed: 100, // Možná upravit pro mobilní zařízení
+        }
+      },      
+    ],    
   };
 
   return (
